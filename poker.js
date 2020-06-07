@@ -1,18 +1,25 @@
-class mainDeck {
-    constructor() {
-       this.mainDeck = []
-// making the deck
-       const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
-       const suits = ['Clubs', 'Diamonds', 'Spades', 'Hearts']
-// assign key value pair, every suit needs one of all values
-       for (const suit in suits) {
-           
-           }
-       }
+class Cards {
+    constructor () {
+        this.suits = ['Clubs', 'Diamonds', 'Spades', 'Hearts'];
+        this.value = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
     }
+    randomGenerator() {
+        let value = this.value[Math.floor(Math.random()*this.value.length)];
+        let suit = this.suits[Math.floor(Math.random()*this.suits.length)];
+        return `${value} of ${suit}`
+        }
+
+    theBots() {
+        let name = "R2D2"
+        let card = randomGenerator()
+        return name + card;
+    }
+
 }
 
-const da_deck = new mainDeck();
 
-console.log(da_deck.mainDeck);
-
+let randoCard = new Cards()
+console.log(randoCard.theBots())
+// console.log("R2D2:",randoCard.randomGenerator())
+// console.log("Alexa:",randoCard.randomGenerator())
+// console.log("Vincent Van Gogh Bot:",randoCard.randomGenerator())
