@@ -12,22 +12,32 @@ console.log("")
 const menu = prompt("Press enter to draw!");
 
 
+
 class Cards {
     constructor () {
         this.suits = ['Clubs', 'Diamonds', 'Spades', 'Hearts'];
-        this.value = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
-        this.name = name;
+        this.value = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+        this.money = 500
     }
     randomGenerator() {
         let value = this.value[Math.floor(Math.random()*this.value.length)];
         let suit = this.suits[Math.floor(Math.random()*this.suits.length)];
         let thecard = `${value} of ${suit}`
-        console.log(`${thecard}`)    
+        let wallet = this.money
+        if (value > 8) {
+            wallet += 500;
+        console.log(`${thecard} You Won! You now have $${wallet}`) 
+        }else if (value < 8) {
+            wallet -= 500
+            console.log(`${thecard} You lose! You now have $${wallet}`)
+        }
+            
 
     }
 }
 
 
 
-let joe = new Cards(name = 'Joe');
-joe.randomGenerator();
+
+let thecard = new Cards();
+thecard.randomGenerator();
