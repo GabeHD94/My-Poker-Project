@@ -3,41 +3,77 @@ console.log("")
 console.log("Draw a card, depending on what it is, you will either win or lose money")
 console.log("")
 console.log("Here are the rules!")
+console.log("-You get 5 turns per game!")
 console.log("-If it's higher than 8, you win $500!")
 console.log("-If it's higher than 10, you win $1000!")
-console.log("-If you get K of Diamonds, you win $2000!")
+console.log("-If you get 14 of Diamonds, you win $2000!")
 console.log("-If it's lower than 8, you lose $500!")
 console.log("-Aces count as 1")
 console.log("")
 const menu = prompt("Press enter to draw!");
 
-
+wallet = 500
 
 class Cards {
     constructor () {
         this.suits = ['Clubs', 'Diamonds', 'Spades', 'Hearts'];
         this.value = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-        this.money = 500
+        // this.money = 500
     }
     randomGenerator() {
         let value = this.value[Math.floor(Math.random()*this.value.length)];
         let suit = this.suits[Math.floor(Math.random()*this.suits.length)];
         let thecard = `${value} of ${suit}`
-        let wallet = this.money
-        if (value > 8) {
-            wallet += 500;
-        console.log(`${thecard} You Won! You now have $${wallet}`) 
-        }else if (value < 8) {
-            wallet -= 500
-            console.log(`${thecard} You lose! You now have $${wallet}`)
-        }
-            
+        if (value <= 5) { 
+            wallet -= 500;
+           const turn = prompt(`${thecard} Sucks to suck! You have $${wallet}`);
 
+        }else if (value <= 10) {
+            wallet += 500
+           const turn = prompt(`${thecard} Nice one! You now have $${wallet}`)
+
+        }else if (value <= 13) {
+            wallet += 1000;
+            const turn = prompt(`${thecard} Draw again! You have $${wallet}`);
+
+        }else if (value = 14) {
+            wallet += 2000;
+            const turn = prompt(`${thecard} Draw again! You have $${wallet}`);
+        }
+        return (`$${wallet}`)
     }
 }
 
+function total(finaltotal) {
+    let wallettotal = finaltotal 
+    if (wallettotal <= 0) {
+        console.log("You'er broke as joke! Better luck next time!")
+    }else if (wallettotal > 500) {
+        console.log("Nice game! Come back again so we can win our money back!")        
+    }else if (wallettotal = 500){
+        "You broke even! No harm no foul!" 
+    }
+    return wallettotal
+}
+
+function difference(dif) {
+    let thedif = dif 
+    if (thedif > 500) {
+        thedif-=500;
+        console.log(`You won $${thedif} more from your buy in!`)
+    }else if (thedif = 500){
+        "You broke even! No harm no foul!" 
+    }
+    return thedif
+}
 
 
 
 let thecard = new Cards();
 thecard.randomGenerator();
+thecard.randomGenerator();
+thecard.randomGenerator();
+thecard.randomGenerator();
+thecard.randomGenerator();
+total(wallet)
+difference(wallet)
